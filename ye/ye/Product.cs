@@ -31,5 +31,20 @@ namespace ye
                     return false;
             }
         }
+        public bool deleteProduct(string idP)
+        {
+            using (SqlConnection connection = new SqlConnection(connect_Str))
+            {
+                connection.Open();
+                string sql = "DELETE DIEM WHERE MaHocVien = @mhv";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.AddWithValue("@mhv", idP);
+                int row = cmd.ExecuteNonQuery();
+                if (row > 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
     }
 }

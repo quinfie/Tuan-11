@@ -62,6 +62,11 @@ namespace ye
         {
             throw new NotImplementedException();
         }
+
+        internal bool deleteProduct(string mhv, string mkh)
+        {
+            throw new NotImplementedException();
+        }
     }
     
 }

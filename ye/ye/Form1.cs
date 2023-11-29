@@ -16,6 +16,7 @@ namespace ye
     public partial class Form1 : Form
     {
         private static string connect_Str = @"Data Source=LAPTOP-77AKUU80\SQLEXPRESS;Initial Catalog=QLCH;Integrated Security=True";
+        Product p = new Product();
         public Form1()
         {
             InitializeComponent();
@@ -78,6 +79,38 @@ namespace ye
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            if (txt_IDP.Text == null)
+            {
+                MessageBox.Show("Need Product data", "Field Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_IDP.Focus();
+            }
+            else
+            {
+                if (txt_IDA.Text == null)
+                {
+                    MessageBox.Show("Need Product data", "Field Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txt_IDA.Focus();
+                }
+                else
+                {
+                    string mhv = txt_IDP.Text;
+                    string mkh = txt_IDA.Text;
+                    if (dbmanager.deleteProduct(mhv, mkh) == true)
+                    {
+                        btn_Refresh.PerformClick();
+                        MessageBox.Show("Hoàn tất xóa điểm", "Delete Score", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Chưa hoàn tất xóa điểm", "Delete Score", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
         }
     }
 }

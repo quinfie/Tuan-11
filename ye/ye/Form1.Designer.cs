@@ -184,6 +184,7 @@
             this.btn_Delete.TabIndex = 2;
             this.btn_Delete.Text = "Xóa";
             this.btn_Delete.UseVisualStyleBackColor = false;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // dataGridView_Product
             // 
